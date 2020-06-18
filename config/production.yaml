@@ -1,0 +1,72 @@
+name: Spiritz App
+
+server:
+  rootPath: /
+
+jwtKeyEncoded: NQ79lHzMcsXBJ3YYiFo7kbLZUSW96xswcvvzjEtsY5w=
+
+notifications:
+  emailEnabled: true # this will send the email
+  push:
+    arn: arn:aws:sns:us-west-2:221496308928:app/APNS/Spiritz-iOS-Production
+    enabled: true
+
+uploadConfig:
+  isEnabled: true
+  bucketName: uploads.spiritz.app
+
+elastic:
+  endpoint: https://33ff8c6ad15544828adcd2a93058460b.us-west-2.aws.found.io:9243
+  auth:
+    apiKey: UnF5TEEzRUJZVmw0UEh1TWhkU0k6VDI4UEZ0M2dSMWlYbmlLRHd2ZGg0Zw==
+
+foursquare:
+  clientId: QQMVZDSD5WT4EMJQRLTWXH3511JUJNWMBNNHO14BHAWF5JLQ
+  clientSecret: YDXKKEYL2PZBS01M4BISYF4P1VXAQZMQAKRVWF1APA5CJEUU
+  api: https://api.foursquare.com/v2
+
+#Jersey client settings
+jerseyClientConfig:
+  #The size of the work queue of the pool used for asynchronous requests.
+  #Additional threads will be spawn only if the queue is reached its maximum size.
+  workQueueSize: 16
+  retries: 1
+  connectionTimeout: 1000ms
+  timeout: 1000ms
+  connectionRequestTimeout: 1000ms
+
+database:
+  # the name of your JDBC driver
+  driverClass: org.postgresql.Driver
+
+  user: spiritz
+
+  password: jackson13
+
+  # the JDBC URL
+  url: jdbc:postgresql://spiritz-main.ce7kar7kyrlx.us-west-2.rds.amazonaws.com/Spiritz
+
+  # any properties specific to your JDBC driver:
+  properties:
+    charSet: UTF-8
+
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 1s
+
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+
+  # the minimum number of connections to keep open
+  minSize: 8
+
+  # the maximum number of connections to keep open
+  maxSize: 32
+
+  # whether or not idle connections should be validated
+  checkConnectionWhileIdle: false
+
+  # the amount of time to sleep between runs of the idle connection validation, abandoned cleaner and idle pool resizing
+  evictionInterval: 10s
+
+  # the minimum amount of time an connection must sit idle in the pool before it is eligible for eviction
+  minIdleTime: 1 minute

@@ -1,0 +1,68 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.41'
+}
+
+group 'com.mrktproject.basic-server'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+mainClassName = 'BasicServer.ServerKt'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+ext.dropwizard_version = '1.3.14'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-reflect:1.1.0"
+    compile "io.dropwizard:dropwizard-core:$dropwizard_version"
+    compile "io.dropwizard:dropwizard-auth:$dropwizard_version"
+    compile "io.dropwizard:dropwizard-assets:$dropwizard_version"
+    compile "io.dropwizard:dropwizard-jdbi:$dropwizard_version"
+    compile "io.dropwizard:dropwizard-client:$dropwizard_version"
+    compile "io.dropwizard:dropwizard-forms:$dropwizard_version"
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.9.7'
+
+    /* JWT */
+    compile 'io.jsonwebtoken:jjwt-api:0.10.7'
+    runtime 'io.jsonwebtoken:jjwt-impl:0.10.7',
+            'io.jsonwebtoken:jjwt-jackson:0.10.7'
+    compile 'com.auth0:jwks-rsa:0.9.0'
+
+    /* Google Auth */
+    compile 'com.google.api-client:google-api-client:1.30.9'
+
+    /* Database */
+    compile group: 'org.jdbi', name: 'jdbi3-core', version: '3.1.0'
+    compile group: 'org.jdbi', name: 'jdbi3-sqlobject', version: '3.1.0'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+
+    /* Security */
+    compile 'com.google.crypto.tink:tink:1.3.0-rc3'
+    compile 'org.hashids:hashids:1.0.3'
+
+    /* Aws */
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.228')
+    implementation 'com.amazonaws:aws-java-sdk-ses'
+    implementation 'com.amazonaws:aws-java-sdk-s3'
+    implementation 'com.amazonaws:aws-java-sdk-sns'
+
+    /* Mustache */
+    compile 'com.github.spullara.mustache.java:compiler:0.9.6'
+}
+
+run {
+    args = ['server', 'config/local.yaml']
+}
