@@ -1,50 +1,18 @@
-name: Spiritz App
+name: Basic App
 
 server:
   rootPath: /
-
-jwtKeyEncoded: NQ79lHzMcsXBJ3YYiFo7kbLZUSW96xswcvvzjEtsY5w=
-
-notifications:
-  emailEnabled: true # this will send the email
-  push:
-    arn: arn:aws:sns:us-west-2:221496308928:app/APNS/Spiritz-iOS-Production
-    enabled: true
-
-uploadConfig:
-  isEnabled: true
-  bucketName: uploads.spiritz.app
-
-elastic:
-  endpoint: https://33ff8c6ad15544828adcd2a93058460b.us-west-2.aws.found.io:9243
-  auth:
-    apiKey: UnF5TEEzRUJZVmw0UEh1TWhkU0k6VDI4UEZ0M2dSMWlYbmlLRHd2ZGg0Zw==
-
-foursquare:
-  clientId: QQMVZDSD5WT4EMJQRLTWXH3511JUJNWMBNNHO14BHAWF5JLQ
-  clientSecret: YDXKKEYL2PZBS01M4BISYF4P1VXAQZMQAKRVWF1APA5CJEUU
-  api: https://api.foursquare.com/v2
-
-#Jersey client settings
-jerseyClientConfig:
-  #The size of the work queue of the pool used for asynchronous requests.
-  #Additional threads will be spawn only if the queue is reached its maximum size.
-  workQueueSize: 16
-  retries: 1
-  connectionTimeout: 1000ms
-  timeout: 1000ms
-  connectionRequestTimeout: 1000ms
 
 database:
   # the name of your JDBC driver
   driverClass: org.postgresql.Driver
 
-  user: spiritz
+  user: jackson
 
-  password: jackson13
+  password:
 
   # the JDBC URL
-  url: jdbc:postgresql://spiritz-main.ce7kar7kyrlx.us-west-2.rds.amazonaws.com/Spiritz
+  url: jdbc:postgresql://localhost:5432/Spiritz
 
   # any properties specific to your JDBC driver:
   properties:

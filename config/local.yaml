@@ -1,40 +1,7 @@
-name: Spiritz App
-
-jwtKeyEncoded: NQ79lHzMcsXBJ3YYiFo7kbLZUSW96xswcvvzjEtsY5w=
-
-notifications:
-  emailEnabled: false # this will just print email
-  push:
-    arn: arn:aws:sns:us-west-2:221496308928:app/APNS_SANDBOX/Spiritz-iOS-dev
-    enabled: false
+name: Basic App
 
 server:
   rootPath: /
-
-foursquare:
-  clientId: QQMVZDSD5WT4EMJQRLTWXH3511JUJNWMBNNHO14BHAWF5JLQ
-  clientSecret: YDXKKEYL2PZBS01M4BISYF4P1VXAQZMQAKRVWF1APA5CJEUU
-  api: https://api.foursquare.com/v2
-
-#Jersey client settings
-jerseyClientConfig:
-  #The size of the work queue of the pool used for asynchronous requests.
-  #Additional threads will be spawn only if the queue is reached its maximum size.
-  workQueueSize: 16
-  retries: 1
-  connectionTimeout: 1000ms
-  timeout: 1000ms
-  connectionRequestTimeout: 1000ms
-
-uploadConfig:
-  isEnabled: false
-  bucketName: spritiz-uploads
-
-elastic:
-  endpoint: https://33ff8c6ad15544828adcd2a93058460b.us-west-2.aws.found.io:9243
-  shouldIndex: false
-  auth:
-    apiKey: UnF5TEEzRUJZVmw0UEh1TWhkU0k6VDI4UEZ0M2dSMWlYbmlLRHd2ZGg0Zw==
 
 database:
   # the name of your JDBC driver
